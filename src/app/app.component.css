@@ -1,0 +1,40 @@
+.centerTable{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.type1{
+    background-color: brown;
+    color: white;
+    border-radius: 10px;
+}
+
+.type2{
+    background-color: cadetblue;
+    border-radius: 10px;
+}
+
+.type3{
+    background-color: cornflowerblue;
+    border-radius: 10px;
+}
+
+.type4{
+    background-color: forestgreen;
+    color: white;
+    border-radius: 10px;
+}
+
+.type5{
+    background-color: burlywood;
+    border-radius: 10px;
+}
+
+.type6{
+    background-color: coral;
+    border-radius: 10px;
+}
+
+.buttonCenter{
+    text-align: center;
+}
