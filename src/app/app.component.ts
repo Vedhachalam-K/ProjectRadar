@@ -9,6 +9,8 @@ import { RadarInput } from './models/RadarInput';
 export class AppComponent {
   title = 'app';
 
+  displayChart:boolean = false;
+
   n: number = 10;
   nn: number = this.n;
   j: number = this.n - 1;
@@ -108,8 +110,40 @@ export class AppComponent {
   }
 
   getGraph() {
+    this.displayChart = true;
     this.result = this.ri.type1 + " - " + this.ri.type2 + " - " + this.ri.type3 + " - " + this.ri.type4 + " - " + this.ri.type5 + " - " + this.ri.type6;
     console.log(this.result);
+    this.demoradarChartData = [
+      {data: [this.ri.type2, this.ri.type3, this.ri.type4, this.ri.type5, this.ri.type6, this.ri.type1], label: ''}
+    ];
+  }
+
+  // Radar
+  public demoradarChartLabels:string[] = ['Type2', 'Type3', 'Type4', 'Type5', 'Type6', 'Type1'];
+ 
+  public demoradarChartData:any;
+
+  public radarChartType:string = 'radar';
+ 
+  public demoradarChartOptions:any = {
+    scale:{
+      ticks:{
+        min: 0,
+        max: 10
+      }
+    },
+    legend:{
+      display:false
+    }
+  }
+
+  // events
+  public chartClicked(e:any):void {
+    console.log(e);
+  }
+ 
+  public chartHovered(e:any):void {
+    console.log(e);
   }
 }
 

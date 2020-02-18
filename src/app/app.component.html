@@ -1,38 +1,53 @@
-<br/>
-<br/>
+<br />
+<br />
 <div style="text-align: center;">{{result}}</div>
-<br/>
-<br/>
-<table border=0 class="centerTable">
-  <tr *ngFor="let data of content; let i = index">
-    <td [class]="cell" *ngFor="let cell of data; let ii = index">
-      <span *ngIf="cell != ' ' && cell == 'type1'">
-        <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type1" [value]="nn - i">{{nn - i}}
-      </span>
-      <span *ngIf="cell != ' ' && cell == 'type2'">
-        <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type2" [value]="nn - i">{{nn - i}}
-      </span>
-      <span *ngIf="cell != ' ' && cell == 'type3'">
-        <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type3" [value]="nn - i">{{nn - i}}
-      </span>
-    </td>
-  </tr>
-  <tr *ngFor="let data of content2; let i2 = index">
-    <td [class]="cell" *ngFor="let cell of data; let ii2 = index">
-      <span *ngIf="cell != ' ' && cell == 'type4'">
-        <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type4" [value]="i2">{{i2}}
-      </span>
-      <span *ngIf="cell != ' ' && cell == 'type5'">
-        <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type5" [value]="i2">{{i2}}
-      </span>
-      <span *ngIf="cell != ' ' && cell == 'type6'">
-        <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type6" [value]="i2">{{i2}}
-      </span>
-    </td>
-  </tr>
-</table>
-<br/>
-<br/>
-<div style="text-align: center;">
-  <button class="btn btn-primary" type="button" (click)="getGraph()">SUBMIT</button>
+<br />
+<br />
+<div *ngIf="!displayChart">
+  <table border=0 class="centerTable">
+    <tr *ngFor="let data of content; let i = index">
+      <td [class]="cell" *ngFor="let cell of data; let ii = index">
+        <span *ngIf="cell != ' ' && cell == 'type1'">
+          <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type1" [value]="nn - i">{{nn - i}}
+        </span>
+        <span *ngIf="cell != ' ' && cell == 'type2'">
+          <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type2" [value]="nn - i">{{nn - i}}
+        </span>
+        <span *ngIf="cell != ' ' && cell == 'type3'">
+          <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type3" [value]="nn - i">{{nn - i}}
+        </span>
+      </td>
+    </tr>
+    <tr *ngFor="let data of content2; let i2 = index">
+      <td [class]="cell" *ngFor="let cell of data; let ii2 = index">
+        <span *ngIf="cell != ' ' && cell == 'type4'">
+          <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type4" [value]="i2">{{i2}}
+        </span>
+        <span *ngIf="cell != ' ' && cell == 'type5'">
+          <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type5" [value]="i2">{{i2}}
+        </span>
+        <span *ngIf="cell != ' ' && cell == 'type6'">
+          <input *ngIf="cell != ' '" type=radio name="{{cell}}" [(ngModel)]="ri.type6" [value]="i2">{{i2}}
+        </span>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <br />
+  <div style="text-align: center;">
+    <button class="btn btn-primary" type="button" (click)="getGraph()">SUBMIT</button>
+  </div>
+</div>
+
+<div *ngIf="displayChart" class="rdChart">
+  <h3 style="text-align:center;">Radar Chart</h3>
+  <div style="display: block">
+    <canvas baseChart 
+      [datasets]="demoradarChartData" 
+      [labels]="demoradarChartLabels"
+      [options]="demoradarChartOptions"
+      [chartType]="radarChartType"
+      (chartHover)="chartHovered($event)"
+      (chartClick)="chartClicked($event)"></canvas>
+  </div>
 </div>
